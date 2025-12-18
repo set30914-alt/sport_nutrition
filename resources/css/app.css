@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#09090b] text-white font-[Inter];
+  }
+}
+#adminMenu {
+    z-index: 9999 !important;
+}
+
+.app-header {
+    position: relative;
+    z-index: 10000; /* вище ніж hero */
+}
+
+@layer components {
+  .app-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .app-shell {
+    @apply min-h-screen flex flex-col bg-[#09090b] text-white;
+  }
+
+  .app-header {
+    @apply w-full bg-black/90 border-b border-zinc-800;
+  }
+
+  .app-header-inner {
+    @apply app-container flex items-center justify-between h-16 sm:h-20;
+  }
+
+  .logo-icon {
+    @apply w-10 h-10 rounded-xl bg-lime-500 flex items-center justify-center text-black font-bold text-xl shadow-lg;
+  }
+
+  .logo-title {
+    @apply text-2xl font-extrabold tracking-tight;
+  }
+
+  .logo-accent {
+    @apply text-lime-400;
+  }
+
+  .nav-link {
+    @apply text-zinc-300 hover:text-white transition font-medium;
+  }
+  .nav-link-active {
+    @apply text-white font-semibold;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold transition;
+  }
+
+  .btn-accent {
+    @apply btn bg-lime-500 text-black shadow-lg shadow-lime-500/20 hover:bg-lime-400 hover:shadow-lime-400/40;
+  }
+
+  .btn-outline {
+    @apply btn border border-lime-500 text-lime-400 hover:bg-lime-500/10;
+  }
+
+  .btn-dark {
+    @apply btn bg-zinc-900 border border-zinc-700 text-zinc-200 hover:border-zinc-500;
+  }
+
+  .hero-section {
+    @apply relative overflow-hidden bg-gradient-to-b from-black to-zinc-950;
+  }
+
+  .hero-inner {
+    @apply app-container py-16 sm:py-20 lg:py-24 grid lg:grid-cols-2 gap-14 items-center;
+  }
+
+  .hero-badge {
+    @apply inline-flex items-center gap-2 px-4 py-1 rounded-full bg-lime-500/10 text-lime-400 border border-lime-500/40 text-xs font-semibold uppercase tracking-wide;
+  }
+
+  .hero-title {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight;
+  }
+
+  .hero-title-accent {
+    @apply text-lime-400;
+  }
+
+  .hero-subtitle {
+    @apply text-zinc-300 text-sm sm:text-base max-w-xl;
+  }
+
+  .product-card {
+    @apply bg-zinc-900/70 rounded-3xl overflow-hidden border border-zinc-800 shadow-lg hover:border-lime-500/60 hover:shadow-xl transition flex flex-col;
+  }
+
+  .product-image {
+    @apply w-full h-56 object-cover transition-transform duration-500;
+  }
+  .product-card:hover .product-image {
+    transform: scale(1.05);
+  }
+
+  .product-badge {
+    @apply absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 border border-zinc-700 text-xs font-semibold;
+  }
+
+  .product-body {
+    @apply p-6 flex flex-col gap-2;
+  }
+
+  .product-title {
+    @apply text-lg font-semibold text-white;
+  }
+
+  .product-desc {
+    @apply text-sm text-zinc-400 line-clamp-2;
+  }
+
+  .product-price {
+    @apply text-xl font-extrabold text-lime-400;
+  }
+
+  .filter-panel {
+    @apply bg-zinc-900/80 border border-zinc-800 rounded-3xl p-6 flex flex-col gap-4;
+  }
+
+  .filter-title {
+    @apply text-zinc-300 font-semibold uppercase tracking-wide text-sm flex items-center justify-between;
+  }
+
+  .filter-input {
+    @apply w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-700 text-sm placeholder-zinc-500 text-zinc-100 focus:outline-none focus:ring-2 focus:ring-lime-500/60 focus:border-lime-500/60;
+  }
+
+  .category-pill {
+    @apply w-full px-3 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-sm text-zinc-300 hover:bg-zinc-800 transition flex items-center justify-between;
+  }
+
+  .category-pill-active {
+    @apply bg-lime-500 text-black font-semibold;
+  }
+
+  .pagination {
+    @apply flex justify-center mt-10;
+  }
+
+  .page-link {
+    @apply inline-flex items-center justify-center min-w-[2.25rem] h-9 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-sm text-zinc-300 hover:bg-zinc-800 transition;
+  }
+
+  .page-active {
+    @apply bg-lime-500 text-black border-lime-400;
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in { from {opacity:0;} to {opacity:1;} }
+  @keyframes fade-up { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+  @keyframes slide-right { from {transform:translateX(100%);} to {transform:translateX(0);} }
+
+  .animate-fade-in { animation: fade-in .4s ease-out forwards; }
+  .animate-fade-up { animation: fade-up .6s ease-out forwards; }
+  .animate-slide-right { animation: slide-right .4s ease-out forwards; }
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #18181b; }
+::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+/* ================================
+   GLOBAL DARK FORM STYLING
+   (БЕЗ зміни HTML)
+================================ */
+
+/* Інпути */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input:not([type]),
+select {
+    @apply bg-zinc-800 text-white border border-zinc-700 rounded-xl
+           px-4 py-2 outline-none
+           focus:border-lime-400 focus:ring-2 focus:ring-lime-500/40;
+}
+
+/* Текстові поля */
+textarea {
+    @apply bg-zinc-800 text-white border border-zinc-700 rounded-xl
+           px-4 py-3 outline-none resize-none
+           focus:border-lime-400 focus:ring-2 focus:ring-lime-500/40;
+}
+
+/* Плейсхолдер */
+input::placeholder,
+textarea::placeholder {
+    @apply text-zinc-500;
+}
